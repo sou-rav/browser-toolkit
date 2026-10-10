@@ -1,0 +1,27 @@
+main{max-width:660px;margin:28px auto 60px;padding:0 20px}
+header{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+header img{width:44px;height:44px;border-radius:12px}
+h1{margin:0;font-size:22px}
+header p{margin:3px 0 0;color:var(--muted);line-height:1.45}
+h2{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:24px 2px 8px}
+.list{overflow:hidden}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 16px;cursor:pointer}
+.row b{display:block;font-weight:600}
+.row small{display:block;color:var(--muted);font-size:12px;margin-top:1px}
+.pad{padding:14px 16px}
+
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:10px;display:flex;flex-direction:column;gap:10px}
+.head{display:flex;gap:10px;align-items:center}
+input[type=text]{padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--fg);font:inherit;outline:none}
+input[type=text]:focus{border-color:var(--accent)}
+.folder{flex:1;font-weight:600}
+.exts{width:100%}
+button{padding:10px 16px;border-radius:10px;font-weight:600}
+.soft{background:var(--accent-soft);color:var(--accent)}
+.del{border:1px solid var(--line);color:var(--rec)}
+.save{width:100%;margin-top:14px;padding:12px;background:var(--accent);color:#fff;border-radius:12px}
+button:hover{filter:brightness(.96)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+#status{min-height:20px;margin:10px 2px 0;color:#188038;font-weight:600}
+#status.err{color:var(--rec)}
+.hint{color:var(--muted);font-size:12px;margin:10px 0 0;line-height:1.45}

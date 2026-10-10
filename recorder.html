@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Screen Recorder</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="recorder.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icons/icon48.png" alt="">
+      <div><h1>Screen Recorder</h1><p>Record a tab, window or your whole screen to MP4.</p></div>
+    </header>
+
+    <div id="autoBox" class="box hide">
+      <div><b>Meeting detected</b><span id="autoName"></span></div>
+      <div class="btns"><button id="autoGo" class="primary">Start recording</button><button id="autoNo">Not now</button></div>
+    </div>
+    <div id="recoverBox" class="box hide">
+      <div><b>Unfinished recording found</b><span id="recoverInfo"></span></div>
+      <div class="btns"><button id="recoverSave" class="primary">Save it</button><button id="recoverDiscard">Discard</button></div>
+    </div>
+
+    <section class="card status">
+      <span id="state" class="pill">Ready</span>
+      <span id="timer">00:00</span>
+      <div class="btns">
+        <button id="capture" class="primary">Capture screen</button>
+        <button id="pause" disabled>Pause</button>
+        <button id="stop" disabled>Stop</button>
+      </div>
+    </section>
+    <p id="msg"></p>
+
+    <section id="result" class="card result hide">
+      <video id="preview" controls></video>
+      <div class="btns"><button id="save" class="primary">Save to your computer</button></div>
+    </section>
+
+    <h2>Audio</h2>
+    <section class="card list">
+      <label class="row"><span><b>Tab / system audio</b><small>Also switch on “Share tab audio” in Chrome's picker.</small></span><input type="checkbox" id="sysAudio" class="switch"></label>
+      <label class="row"><span><b>Microphone</b><small>Mixed in with the tab audio.</small></span><input type="checkbox" id="mic" class="switch"></label>
+      <label class="row"><span><b>Mute my speakers while recording</b><small>The recording still has the sound.</small></span><input type="checkbox" id="muteLocal" class="switch"></label>
+    </section>
+
+    <h2>Quality</h2>
+    <section class="card grid4">
+      <label>Format
+        <select id="format"><option value="mp4">MP4</option><option value="webm">WebM</option></select>
+      </label>
+      <label>Quality
+        <select id="res"><option value="orig">Original</option><option value="1080">1080p</option><option value="720">720p</option><option value="480">480p</option></select>
+      </label>
+      <label>Frame rate
+        <select id="fps"><option value="15">15</option><option value="24">24</option><option value="30">30</option><option value="60">60</option></select>
+      </label>
+      <label>Countdown
+        <select id="countdown"><option value="0">Off</option><option value="3">3 s</option><option value="5">5 s</option><option value="10">10 s</option></select>
+      </label>
+    </section>
+
+    <h2>Saving</h2>
+    <section class="card list">
+      <label class="row"><span><b>Save automatically when I stop</b></span><input type="checkbox" id="autosave" class="switch"></label>
+      <label class="row"><span><b>Crash protection</b><small>Saves the recording in pieces as it goes. Best with WebM; an MP4 may not open if Chrome crashes mid-recording.</small></span><input type="checkbox" id="crash" class="switch"></label>
+      <div class="row folder">
+        <span><b>Save to</b><small id="folderName">Downloads (default)</small></span>
+        <span class="btns">
+          <button id="chooseFolder" class="small">Choose folder…</button>
+          <button id="allowFolder" class="small hide">Allow access</button>
+          <button id="resetFolder" class="small hide">Use Downloads</button>
+        </span>
+      </div>
+    </section>
+    <p class="hint">Chrome won't let you pick Downloads, Documents or Desktop themselves. Pick or create a subfolder, such as Videos\Recordings.</p>
+
+    <h2>Meetings</h2>
+    <section class="card list">
+      <label class="row"><span><b>Offer to record when I join a meeting</b><small>Google Meet and Zoom in the browser.</small></span><input type="checkbox" id="autoPrompt" class="switch"></label>
+      <label class="row"><span><b>Stop when the meeting ends</b></span><input type="checkbox" id="meetStop" class="switch"></label>
+    </section>
+  </main>
+
+  <div id="overlay"><div id="count">3</div><p>Switch to what you want to record…</p></div>
+  <script src="recorder.js"></script>
+</body></html>

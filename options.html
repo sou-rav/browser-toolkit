@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Browser Toolkit - Settings</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icons/icon48.png" alt="">
+      <div><h1>Settings</h1><p>Switch each tool on or off. Turned-off tools disappear from the toolbar popup.</p></div>
+    </header>
+
+    <h2>Tools</h2>
+    <section class="card list">
+      <label class="row"><span><b>Screen recorder</b><small>MP4 recording, plus the "Record this meeting?" prompt on Google Meet and Zoom.</small></span><input type="checkbox" id="recEnabled" class="switch"></label>
+      <label class="row"><span><b>Screenshots</b><small>Visible area, full page, delay and Snipping Tool.</small></span><input type="checkbox" id="shotsEnabled" class="switch"></label>
+      <label class="row"><span><b>Selection menu</b><small>The small menu that appears when you select text. You can also turn it off per site from the toolbar popup.</small></span><input type="checkbox" id="menuEnabled" class="switch"></label>
+      <label class="row"><span><b>Discord Send button</b><small>Paper-plane icon in Discord's message box.</small></span><input type="checkbox" id="discordSend" class="switch"></label>
+      <label class="row"><span><b>Sort downloads into folders</b><small>Set the folders below.</small></span><input type="checkbox" id="enabled" class="switch"></label>
+    </section>
+    <p class="hint">Refresh open tabs after changing the selection menu or Discord button.</p>
+
+    <h1 style="font-size:16px;margin:28px 0 0">Download rules</h1>
+    <p class="hint" style="margin-top:4px">Choose which file types are saved into which sub-folders of your Downloads folder. Unlisted types are saved normally.</p>
+
+    <h2>Folders</h2>
+    <div id="rules"></div>
+    <div class="actions">
+      <button id="add" class="soft">+ Add folder rule</button>
+      <button id="reset" class="soft">Reset to defaults</button>
+    </div>
+    <button id="save" class="save">Save configuration</button>
+    <p id="status"></p>
+
+    <h2>Back up / move rules</h2>
+    <section class="card pad">
+      <div class="actions">
+        <button id="export" class="soft">Export rules</button>
+        <button id="import" class="soft">Import rules…</button>
+        <input type="file" id="file" accept="application/json,.json" hidden>
+      </div>
+      <p class="hint">Importing fills in the list above. Click Save to keep it. Exported files are saved like any other download, so a .json export may land in your Code folder.</p>
+    </section>
+
+    <div id="edgeBox" class="hide">
+      <h2>Microsoft Edge</h2>
+      <section class="card list">
+        <label class="row"><span><b>Use the selection menu and screenshot tools in Edge too</b><small>Edge has its own Mini Menu and Web capture, so these are off by default. Refresh open tabs after changing.</small></span><input type="checkbox" id="edgeOverride" class="switch"></label>
+      </section>
+    </div>
+  </main>
+  <script src="rules.js"></script>
+  <script src="options.js"></script>
+</body></html>
