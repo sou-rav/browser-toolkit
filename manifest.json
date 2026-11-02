@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Browser Toolkit",
-  "version": "3.4.0",
+  "version": "3.4.2",
   "description": "Screen recorder that saves MP4, screenshot tools, a download organizer, a quick text-selection menu, and a Send button for Discord.",
   "permissions": [
     "storage",

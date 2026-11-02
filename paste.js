@@ -81,6 +81,18 @@
   }
   function insert(f, text) {
     try { f.focus({ preventScroll: true }); } catch (_) {}
+    // Rich editors (Discord, Slack, Claude, ChatGPT...) keep their own model of the text and ignore text the
+    // browser slips into the page. They do handle a paste event, so offer them one first.
+    if (f.isContentEditable) {
+      try {
+        const before = f.textContent;
+        const dt = new DataTransfer();
+        dt.setData("text/plain", text);
+        const ev = new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true, composed: true });
+        f.dispatchEvent(ev);
+        if (ev.defaultPrevented || f.textContent !== before) return;   // the editor took it
+      } catch (_) {}
+    }
     let ok = false;
     try { ok = document.execCommand("insertText", false, text); } catch (_) {}
     if (!ok && (f.tagName === "TEXTAREA" || f.tagName === "INPUT")) {

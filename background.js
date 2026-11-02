@@ -170,8 +170,11 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
   chrome.storage.sync.get({ routerEnabled: true, routingRules: null }, (r) => {
     try {
       const name = item.filename || "";
-      // leave it alone if routing is off, or another extension already chose a sub-folder
-      if (!r.routerEnabled || /[\\/]/.test(name)) return suggest();
+      // Leave it alone if routing is off, if another extension started this download (download managers such as
+      // IDM name their own files, and two extensions naming one download makes Chrome flag an "Extension error"),
+      // or if a sub-folder was already chosen.
+      const foreign = item.byExtensionId && item.byExtensionId !== chrome.runtime.id;
+      if (!r.routerEnabled || foreign || !name || /[\\/]/.test(name)) return suggest();
       const folder = matchFolder(r.routingRules || DEFAULT_RULES, name);
       if (folder) suggest({ filename: `${folder}/${name}` });
       else suggest();

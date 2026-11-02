@@ -59,6 +59,7 @@ Downloads are saved into sub-folders of your Downloads folder based on their fil
 - Compound extensions such as `tar.gz` work, and the longest match wins
 - **Export / Import** your rules as a JSON file
 - It also sorts the extension's own screenshots and recordings that are saved as normal downloads. Recordings saved to a folder you chose in the recorder are not affected.
+- Downloads started by other extensions (such as IDM) are left alone, so they don't clash with this one.
 - If another download-organizer extension is installed (including the old standalone Download Router), disable it. Only one extension can choose a download's folder.
 
 ## Paste menu
